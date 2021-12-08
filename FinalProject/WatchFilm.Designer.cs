@@ -37,14 +37,12 @@ namespace FinalProject
             // 
             // WMP
             // 
-            this.WMP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WMP.Dock = System.Windows.Forms.DockStyle.Top;
             this.WMP.Enabled = true;
             this.WMP.Location = new System.Drawing.Point(0, 0);
             this.WMP.Name = "WMP";
             this.WMP.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("WMP.OcxState")));
-            this.WMP.Size = new System.Drawing.Size(807, 409);
+            this.WMP.Size = new System.Drawing.Size(807, 400);
             this.WMP.TabIndex = 0;
             // 
             // LayoutPnlEp
@@ -53,9 +51,9 @@ namespace FinalProject
             this.LayoutPnlEp.AutoScroll = true;
             this.LayoutPnlEp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.LayoutPnlEp.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LayoutPnlEp.Location = new System.Drawing.Point(0, 406);
+            this.LayoutPnlEp.Location = new System.Drawing.Point(0, 398);
             this.LayoutPnlEp.Name = "LayoutPnlEp";
-            this.LayoutPnlEp.Size = new System.Drawing.Size(807, 63);
+            this.LayoutPnlEp.Size = new System.Drawing.Size(807, 71);
             this.LayoutPnlEp.TabIndex = 1;
             // 
             // WatchFilm
@@ -66,9 +64,12 @@ namespace FinalProject
             this.ClientSize = new System.Drawing.Size(807, 469);
             this.Controls.Add(this.LayoutPnlEp);
             this.Controls.Add(this.WMP);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "WatchFilm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WatchFilm";
             this.Load += new System.EventHandler(this.WatchFilm_Load);
+            this.ClientSizeChanged += new System.EventHandler(this.WatchFilm_ClientSizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.WMP)).EndInit();
             this.ResumeLayout(false);
 

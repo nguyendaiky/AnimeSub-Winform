@@ -46,12 +46,11 @@ namespace FinalProject
         public static Film filmread(DataRow row)
         {
             Film result = new Film();
-            result.lbName.Text = row["Name"].ToString();
-            result.lbView.Text = row["View"].ToString();
+            result.lbName.Text = row["Name"].ToString(); 
             string path = Application.StartupPath + "\\View\\" + row["Name"].ToString() + "\\image.jfif";
             Image img = Image.FromFile(path);
             result.pctImage.BackgroundImage = img;
-            result.lbView.Text = row["View"].ToString();
+            result.lbView.Text = string.Format("{0:N}", Convert.ToInt32(row["View"])).Replace(".00", "");
 
             return result;
         }

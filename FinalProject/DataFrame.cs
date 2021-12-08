@@ -7,12 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 using ExcelApp = Microsoft.Office.Interop.Excel;
+using GemBox.Spreadsheet;
 
 namespace FinalProject
 {
     class DataFrame
     {
+
+        public static DataTable new_DataFilm()
+        {
+            DataTable res = new DataTable();
+            res.Columns.Add("Name", typeof(string));
+            res.Columns.Add("NameSort", typeof(string));
+            res.Columns.Add("NameOther", typeof(string));
+            res.Columns.Add("NumEp", typeof(int));
+            res.Columns.Add("NumMovie", typeof(int));
+            res.Columns.Add("View", typeof(int));
+            res.Columns.Add("Type", typeof(string));
+            res.Columns.Add("Studio", typeof(string));
+            res.Columns.Add("Season", typeof(string));
+            res.Columns.Add("Director", typeof(string));
+            res.Columns.Add("Rating", typeof(double));
+            return res;
+        }
         //Read datatable
         public static DataTable ReadExcel()
         {
@@ -45,6 +64,7 @@ namespace FinalProject
             myTable.Columns.Add("Studio", typeof(string));
             myTable.Columns.Add("Season", typeof(string));
             myTable.Columns.Add("Director", typeof(string));
+            myTable.Columns.Add("Rating", typeof(double));
 
             for (int i = 2; i <= rows; i++)
             {
@@ -60,11 +80,8 @@ namespace FinalProject
                     myNewRow["Type"] = Convert.ToString(excelRange.Cells[i, 7].Value2); //
                     myNewRow["Studio"] = Convert.ToString(excelRange.Cells[i, 8].Value2); //
                     myNewRow["Season"] = Convert.ToString(excelRange.Cells[i, 9].Value2); //
-                    try
-                    {
-                        myNewRow["Director"] = Convert.ToInt32(excelRange.Cells[i, 10].Value2); //
-                    }
-                    catch { myNewRow["Director"] = ""; }
+                    myNewRow["Director"] = Convert.ToString(excelRange.Cells[i, 10].Value2); //
+                    myNewRow["Rating"] = Convert.ToDouble(excelRange.Cells[i, 11].Value2);
 
                     myTable.Rows.Add(myNewRow);
                 }
@@ -75,11 +92,28 @@ namespace FinalProject
 
             return myTable;
         }
+
+        public static void WriteExcel(string path, DataTable table)
+        {
+            SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
+            var workbook = new ExcelFile();
+            var worksheet = workbook.Worksheets.Add("Sheet1");
+
+
+            worksheet.InsertDataTable(table,
+            new InsertDataTableOptions()
+            {
+                ColumnHeaders = true,
+                StartRow = 0
+            });
+
+            workbook.Save(path);
+        }
         public static DataTable DataSet = ReadExcel();
 
 
         //get list from string
-        private static List<string> selectionFilterFilm(DataTable table, string nameCol)
+        public static List<string> getDataFromCol(DataTable table, string nameCol)
         {
             List<string> result = new List<string>();
             foreach (DataRow row in table.Rows)
@@ -87,22 +121,35 @@ namespace FinalProject
                 string[] type = row[nameCol].ToString().Split(',');
                 foreach (string s in type)
                 {
-                    if (s[0] == ' ')
+                    if (!result.Contains(s.Trim()))
                     {
-                        s.Remove(0, 1);
-                    }
-                    if (!result.Contains(s))
-                    {
-                        result.Add(s);
+                        result.Add(s.Trim());
                     }
                 }
             }
 
             return result;
         }
-        //static string[] select = { "Type", "Studio" };
-        //public static List<string> Type = selectionFilterFilm(DataSet, select[0]);
-        //public static List<string> Studio = selectionFilterFilm(DataSet, select[1]);
+        public static Tuple<List<string>, List<string>> getSplitSeaseon(DataTable table)
+        {
+            List<string> lstSeason = new List<string>() { "Mùa Xuân", "Mùa Hạ", "Mùa Thu", "Mùa Đông"};
+            List<int> lstYearInt = new List<int>();
 
+            foreach (DataRow row in table.Rows)
+            {
+                string[] lstStr = row["Season"].ToString().Split('-');
+
+                int year = Convert.ToInt32(lstStr[1]);
+
+                if (!lstYearInt.Contains(year))
+                    lstYearInt.Add(year);
+            }
+            lstYearInt.Sort();
+            List<string> lstYearStr = lstYearInt.ConvertAll<string>(delegate (int i) { return i.ToString(); });
+
+
+            Tuple<List<string>, List<string>> result = new Tuple<List<string>, List<string>>(lstSeason, lstYearStr);
+            return result;
+        }
     }
 }

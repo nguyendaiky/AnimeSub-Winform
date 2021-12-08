@@ -44,22 +44,7 @@ namespace FinalProject
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
         {
 
         }
@@ -72,6 +57,16 @@ namespace FinalProject
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

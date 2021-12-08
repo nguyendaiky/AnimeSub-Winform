@@ -45,7 +45,7 @@ namespace FinalProject
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::FinalProject.Properties.Resources._99127089_1136004756766400_8261023067304624128_o;
+            this.pictureBox1.BackgroundImage = global::FinalProject.Properties.Resources.avarta;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(209, 66);
             this.pictureBox1.Name = "pictureBox1";
@@ -73,7 +73,6 @@ namespace FinalProject
             this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 24;
             this.label1.Text = "Mật khẩu:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtPassword
             // 
@@ -94,7 +93,6 @@ namespace FinalProject
             this.label2.Size = new System.Drawing.Size(52, 20);
             this.label2.TabIndex = 22;
             this.label2.Text = "Email:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label4
             // 
@@ -105,7 +103,6 @@ namespace FinalProject
             this.label4.Size = new System.Drawing.Size(120, 20);
             this.label4.TabIndex = 21;
             this.label4.Text = "Tên đăng nhập:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtEmail
             // 
@@ -136,6 +133,7 @@ namespace FinalProject
             this.btnLogin.TabIndex = 25;
             this.btnLogin.Text = "Lưu thông tin";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // pictureBox2
             // 
@@ -146,6 +144,7 @@ namespace FinalProject
             this.pictureBox2.Size = new System.Drawing.Size(27, 23);
             this.pictureBox2.TabIndex = 26;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // User
             // 

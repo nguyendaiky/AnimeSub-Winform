@@ -43,11 +43,11 @@ namespace FinalProject
             this.guna2HtmlLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(3, 266);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(3, 241);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(59, 18);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(49, 15);
             this.guna2HtmlLabel1.TabIndex = 2;
             this.guna2HtmlLabel1.Text = "Lượt xem:";
             // 
@@ -56,11 +56,11 @@ namespace FinalProject
             this.lbView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbView.BackColor = System.Drawing.Color.Transparent;
-            this.lbView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbView.ForeColor = System.Drawing.Color.White;
-            this.lbView.Location = new System.Drawing.Point(68, 267);
+            this.lbView.Location = new System.Drawing.Point(58, 241);
             this.lbView.Name = "lbView";
-            this.lbView.Size = new System.Drawing.Size(11, 17);
+            this.lbView.Size = new System.Drawing.Size(10, 15);
             this.lbView.TabIndex = 3;
             this.lbView.Text = "0";
             // 
@@ -101,7 +101,7 @@ namespace FinalProject
             this.pctImage.Location = new System.Drawing.Point(0, 0);
             this.pctImage.Name = "pctImage";
             this.pctImage.ShadowDecoration.Parent = this.pctImage;
-            this.pctImage.Size = new System.Drawing.Size(200, 242);
+            this.pctImage.Size = new System.Drawing.Size(163, 208);
             this.pctImage.TabIndex = 0;
             this.pctImage.TabStop = false;
             this.pctImage.Click += new System.EventHandler(this.pctImage_Click);
@@ -112,11 +112,11 @@ namespace FinalProject
             this.lbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbName.AutoSize = true;
-            this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbName.Location = new System.Drawing.Point(0, 249);
+            this.lbName.Location = new System.Drawing.Point(0, 224);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(49, 16);
+            this.lbName.Size = new System.Drawing.Size(45, 15);
             this.lbName.TabIndex = 5;
             this.lbName.Text = "Name";
             this.lbName.Click += new System.EventHandler(this.lbName_Click);
@@ -134,7 +134,7 @@ namespace FinalProject
             this.Controls.Add(this.pctImage);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "Film";
-            this.Size = new System.Drawing.Size(200, 284);
+            this.Size = new System.Drawing.Size(163, 259);
             ((System.ComponentModel.ISupportInitialize)(this.pctImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -165,7 +165,7 @@ namespace FinalProject
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::FinalProject.Properties.Resources.undraw_secure_login_pdn4__1_;
+            this.pictureBox1.BackgroundImage = global::FinalProject.Properties.Resources.register;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(113, 58);
             this.pictureBox1.Name = "pictureBox1";

@@ -13,6 +13,7 @@ namespace FinalProject
     public partial class WatchFilm : Form
     {
         DataRow row;
+        bool isZoom;
         public WatchFilm(DataRow dr)
         {
             InitializeComponent();
@@ -26,12 +27,20 @@ namespace FinalProject
             {
                 path = Application.StartupPath + "\\Video\\" + row["Name"].ToString() + "\\Movie 1.mp4";
             }
-            WMP.URL = path;
+            WMP.URL = "";
+
         }
 
         private void WatchFilm_Load(object sender, EventArgs e)
         {
             Button_Ep();
+            this.Text = row["NameSort"].ToString();
+            string path_ico = Application.StartupPath + "\\View\\" + row["Name"].ToString() + "\\image.jfif";
+            using (Bitmap bm = (Bitmap)Image.FromFile(path_ico))
+            {
+                this.Icon = Icon.FromHandle(bm.GetHicon());
+            }
+            isZoom = false;
         }
 
         private void Button_Ep()
@@ -74,6 +83,20 @@ namespace FinalProject
             Button btn = (Button)sender;
             string path = Application.StartupPath + "\\Video\\" + row["Name"].ToString() + "\\" + btn.Text + ".mp4";
             WMP.URL = path;
+        }
+   
+        private void WatchFilm_ClientSizeChanged(object sender, EventArgs e)
+        {
+            LayoutPnlEp.Visible = !LayoutPnlEp.Visible;
+            if (isZoom)
+            {
+                WMP.Dock = DockStyle.Top;
+            }
+            else
+            {
+                WMP.Dock = DockStyle.Fill;
+            }
+            isZoom = !isZoom;
         }
     }
 }

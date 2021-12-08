@@ -1,2 +1,1 @@
-# AnimeSub
-AnimeSub Winform Application
+# Hello. Welcome to my Project
