@@ -14,14 +14,27 @@ using Google.Apis.YouTube.v3.Data;
 using System.Drawing;
 using VideoLibrary;
 using MediaToolkit;
+using System.Runtime.InteropServices;
 
 namespace FinalProject
 {
     public partial class YoutubeSearch : Form
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,
+            int nTopRect,
+            int nRightRect,
+            int nBottomRect,
+            int nWidthEllipse,
+            int nHeightEllipse
+        );
+
         public YoutubeSearch()
         {
             InitializeComponent();
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             using (Bitmap bm = Properties.Resources.youtube)
             {
                 this.Icon = Icon.FromHandle(bm.GetHicon());
@@ -82,16 +95,18 @@ namespace FinalProject
                 pnlSearch.Controls.Add(video);
                 video.ChoseClick += SearchReasult_Click;
                 video.DownloadClick += DownloadVideo;
+                video.AddStoreClick += AddStoreVideo;
             }
         }
-
-        public SearchResult YourChoice;
         private void SearchReasult_Click(object sender, EventArgs e)
         {
-            YourChoice = ((YoutubeVideo)sender).YourChoice;
-            this.Close();
+            if ((YoutubeVideo)sender != null)
+            {
+                var vid = ((YoutubeVideo)sender).YourChoice;
+                new PlayYoutube(vid.Id.VideoId, vid.Snippet.Title, vid.Snippet.ChannelTitle).Show();
+            }
         }
-        private async void DownloadVideo(object sender, EventArgs e)
+        private void DownloadVideo(object sender, EventArgs e)
         {
             SearchResult video = ((YoutubeVideo)sender).YourChoice;
             using (var folderDialog = new FolderBrowserDialog())
@@ -100,11 +115,26 @@ namespace FinalProject
                 {
                     string path  = folderDialog.SelectedPath + "\\" + video.Snippet.Title + ".mp4";
                     var ytb = YouTube.Default;
-                    var vid = await ytb.GetVideoAsync("https://www.youtube.com/watch?v=" + video.Id.VideoId);
-                    File.WriteAllBytes(path, await vid.GetBytesAsync());
+                    var vid = ytb.GetVideo("https://www.youtube.com/watch?v=" + video.Id.VideoId);
+                    File.WriteAllBytes(path, vid.GetBytes());
                     MessageBox.Show(video.Snippet.Title + " Download Video Done!");
                 }
             }
+        }
+        private void AddStoreVideo(object sender, EventArgs e)
+        {
+            SearchResult video = ((YoutubeVideo)sender).YourChoice;
+            string url = "https://www.youtube.com/watch?v=" + video.Id.VideoId;
+            if (!DataFrame.MyStore.Contains(url))
+            {
+                DataFrame.MyStore.Add(url);
+                MessageBox.Show("Thêm '" + video.Snippet.Title + "' vào kho thành công");
+            }
+            else
+            {
+                MessageBox.Show("'" + video.Snippet.Title + "' đã có trong không của bạn", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         /// //////////////////////////////////////////////////////////////////////////////////

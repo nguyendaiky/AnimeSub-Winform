@@ -51,5 +51,11 @@ namespace FinalProject
                 this.pctMouseHover(this, e);
         }
 
+        public event EventHandler Remove_Click;
+        private void pctRemove_Click(object sender, EventArgs e)
+        {
+            if (this.Remove_Click != null)
+                this.Remove_Click(this, e);
+        }
     }
 }

@@ -1,0 +1,3 @@
+{"username": "chicuong", "cmt": "phim quá hay"}
+{"username": "kynguyen", "cmt": "phim dảk quá mấy bro ơi!"}
+{"username": "thecloudx130", "cmt": "phim chất lượng tốt"}

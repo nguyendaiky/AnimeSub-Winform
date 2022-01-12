@@ -29,18 +29,23 @@ namespace FinalProject
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbCtrlStore = new Guna.UI2.WinForms.Guna2TabControl();
             this.tbPageLib = new System.Windows.Forms.TabPage();
+            this.gridViewLib = new Guna.UI2.WinForms.Guna2DataGridView();
             this.flowPnlButton = new System.Windows.Forms.FlowLayoutPanel();
             this.tbPageYours = new System.Windows.Forms.TabPage();
+            this.flowPnlMyStore = new System.Windows.Forms.FlowLayoutPanel();
             this.tbHistory = new System.Windows.Forms.TabPage();
-            this.gridViewLib = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.flowPnlHistory = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlYoutube = new System.Windows.Forms.Panel();
             this.tbCtrlStore.SuspendLayout();
             this.tbPageLib.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLib)).BeginInit();
+            this.tbPageYours.SuspendLayout();
+            this.tbHistory.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCtrlStore
@@ -86,37 +91,10 @@ namespace FinalProject
             this.tbPageLib.Text = "Thư viện phim";
             this.tbPageLib.UseVisualStyleBackColor = true;
             // 
-            // flowPnlButton
-            // 
-            this.flowPnlButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowPnlButton.Location = new System.Drawing.Point(3, 3);
-            this.flowPnlButton.Name = "flowPnlButton";
-            this.flowPnlButton.Size = new System.Drawing.Size(808, 34);
-            this.flowPnlButton.TabIndex = 0;
-            // 
-            // tbPageYours
-            // 
-            this.tbPageYours.Location = new System.Drawing.Point(4, 44);
-            this.tbPageYours.Name = "tbPageYours";
-            this.tbPageYours.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPageYours.Size = new System.Drawing.Size(814, 401);
-            this.tbPageYours.TabIndex = 1;
-            this.tbPageYours.Text = "Kho của bạn";
-            this.tbPageYours.UseVisualStyleBackColor = true;
-            // 
-            // tbHistory
-            // 
-            this.tbHistory.Location = new System.Drawing.Point(4, 44);
-            this.tbHistory.Name = "tbHistory";
-            this.tbHistory.Size = new System.Drawing.Size(814, 401);
-            this.tbHistory.TabIndex = 2;
-            this.tbHistory.Text = "Lịch sử xem phim";
-            this.tbHistory.UseVisualStyleBackColor = true;
-            // 
             // gridViewLib
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.gridViewLib.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.gridViewLib.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.gridViewLib.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -125,23 +103,23 @@ namespace FinalProject
             this.gridViewLib.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridViewLib.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gridViewLib.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridViewLib.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridViewLib.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.gridViewLib.ColumnHeadersHeight = 41;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridViewLib.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridViewLib.DefaultCellStyle = dataGridViewCellStyle6;
             this.gridViewLib.EnableHeadersVisualStyles = false;
             this.gridViewLib.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.gridViewLib.Location = new System.Drawing.Point(3, 43);
@@ -171,6 +149,63 @@ namespace FinalProject
             this.gridViewLib.ThemeStyle.RowsStyle.Height = 22;
             this.gridViewLib.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.gridViewLib.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.gridViewLib.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewLib_CellContentDoubleClick);
+            // 
+            // flowPnlButton
+            // 
+            this.flowPnlButton.AutoScroll = true;
+            this.flowPnlButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowPnlButton.Location = new System.Drawing.Point(3, 3);
+            this.flowPnlButton.Name = "flowPnlButton";
+            this.flowPnlButton.Size = new System.Drawing.Size(808, 34);
+            this.flowPnlButton.TabIndex = 0;
+            // 
+            // tbPageYours
+            // 
+            this.tbPageYours.Controls.Add(this.pnlYoutube);
+            this.tbPageYours.Controls.Add(this.flowPnlMyStore);
+            this.tbPageYours.Location = new System.Drawing.Point(4, 44);
+            this.tbPageYours.Name = "tbPageYours";
+            this.tbPageYours.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPageYours.Size = new System.Drawing.Size(814, 401);
+            this.tbPageYours.TabIndex = 1;
+            this.tbPageYours.Text = "Kho của bạn";
+            this.tbPageYours.UseVisualStyleBackColor = true;
+            // 
+            // flowPnlMyStore
+            // 
+            this.flowPnlMyStore.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowPnlMyStore.Location = new System.Drawing.Point(395, 3);
+            this.flowPnlMyStore.Name = "flowPnlMyStore";
+            this.flowPnlMyStore.Size = new System.Drawing.Size(416, 395);
+            this.flowPnlMyStore.TabIndex = 0;
+            // 
+            // tbHistory
+            // 
+            this.tbHistory.Controls.Add(this.flowPnlHistory);
+            this.tbHistory.Location = new System.Drawing.Point(4, 44);
+            this.tbHistory.Name = "tbHistory";
+            this.tbHistory.Size = new System.Drawing.Size(814, 401);
+            this.tbHistory.TabIndex = 2;
+            this.tbHistory.Text = "Lịch sử xem phim";
+            this.tbHistory.UseVisualStyleBackColor = true;
+            // 
+            // flowPnlHistory
+            // 
+            this.flowPnlHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPnlHistory.Location = new System.Drawing.Point(0, 0);
+            this.flowPnlHistory.Name = "flowPnlHistory";
+            this.flowPnlHistory.Size = new System.Drawing.Size(814, 401);
+            this.flowPnlHistory.TabIndex = 0;
+            // 
+            // pnlYoutube
+            // 
+            this.pnlYoutube.AutoScroll = true;
+            this.pnlYoutube.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlYoutube.Location = new System.Drawing.Point(3, 3);
+            this.pnlYoutube.Name = "pnlYoutube";
+            this.pnlYoutube.Size = new System.Drawing.Size(392, 395);
+            this.pnlYoutube.TabIndex = 1;
             // 
             // Store
             // 
@@ -183,6 +218,8 @@ namespace FinalProject
             this.tbCtrlStore.ResumeLayout(false);
             this.tbPageLib.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLib)).EndInit();
+            this.tbPageYours.ResumeLayout(false);
+            this.tbHistory.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -193,7 +230,10 @@ namespace FinalProject
         private System.Windows.Forms.TabPage tbPageLib;
         private System.Windows.Forms.TabPage tbPageYours;
         private System.Windows.Forms.TabPage tbHistory;
-        private System.Windows.Forms.FlowLayoutPanel flowPnlButton;
         private Guna.UI2.WinForms.Guna2DataGridView gridViewLib;
+        private System.Windows.Forms.FlowLayoutPanel flowPnlHistory;
+        private System.Windows.Forms.FlowLayoutPanel flowPnlButton;
+        private System.Windows.Forms.FlowLayoutPanel flowPnlMyStore;
+        private System.Windows.Forms.Panel pnlYoutube;
     }
 }

@@ -1,0 +1,2 @@
+{"username": "kynguyen", "cmt": "phim hay quá"}
+{"username": "test5", "cmt": "ecchi trá hình horror"}

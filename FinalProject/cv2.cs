@@ -51,6 +51,7 @@ namespace FinalProject
             Image img = Image.FromFile(path);
             result.pctImage.BackgroundImage = img;
             result.lbView.Text = string.Format("{0:N}", Convert.ToInt32(row["View"])).Replace(".00", "");
+            result.btnRate.Text = Math.Round(Convert.ToDouble(row["Rating"]), 1).ToString();
 
             return result;
         }

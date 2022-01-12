@@ -7,6 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Services;
+using Google.Apis.Upload;
+using Google.Apis.Util.Store;
+using Google.Apis.YouTube.v3;
+using Google.Apis.YouTube.v3.Data;
 
 namespace FinalProject
 {
@@ -23,7 +29,25 @@ namespace FinalProject
         private void Store_Load(object sender, EventArgs e)
         {
             Load_Button(ap);
+            LoadHistory();
+            LoadMyStore();
         }
+
+        private Form activeForm;
+        private void OpenChildForm(Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.Controls.Add(childForm);
+            this.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
         private void Load_Button(List<char> ap)
         {
             //load all
@@ -136,6 +160,115 @@ namespace FinalProject
             }
             return res;
         }
+        private void gridViewLib_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataTable table = (DataTable)gridViewLib.DataSource;
+            try
+            {
+                DataRow dr = table.Rows[e.RowIndex];
+                DataRow row = DataFrame.DataSet.Select(string.Format("NameSort ='{0}'", dr["Tên"].ToString().Replace("'", "''")))[0];
+                OpenChildForm(new Describe(row));
+            }
+            catch { }
+        }
 
+        //Lịch sử xem phim
+        private void LoadHistory()
+        {
+            foreach(string s in DataFrame.History)
+            {
+                if (s != "")
+                {
+                    DataRow row = DataFrame.DataSet.Select("Name='" + s + "'")[0];
+                    Film hisFilm = cv2.filmread(row);
+                    flowPnlHistory.Controls.Add(hisFilm);
+                    hisFilm.PictureBoxClick += HisClick;
+                }
+            }
+        }
+        private void HisClick(object sender, EventArgs e)
+        {
+            Film film = (Film)sender;
+            DataRow row = DataFrame.DataSet.Select("Name='" + film.lbName.Text + "'")[0];
+            OpenChildForm(new Describe(row));
+        }
+
+        //MyStore kho của bạn
+        private Video getVideoFromUrl(string url)
+        {
+            string id = url.Split('=')[1];
+            var youtubeService = new YouTubeService(new BaseClientService.Initializer()
+            {
+                ApiKey = "AIzaSyC4IgMQoqPKdtW7I5o4-02w1jL94Sb_7Tg",
+                ApplicationName = this.GetType().ToString()
+            });
+
+            var FindbyID = youtubeService.Videos.List("snippet,status");
+            FindbyID.Id = id;
+            FindbyID.MaxResults = 1;
+            var searchListResponse = FindbyID.Execute();
+            Video vid = searchListResponse.Items[0];
+
+            return vid;            
+        }
+        private void LoadMyStore()
+        {
+            foreach (string s in DataFrame.MyStore)
+            {
+                if (s != "")
+                {
+                    if (s.Contains("youtube.com"))
+                    {
+                        YoutubeSave vid = new YoutubeSave(getVideoFromUrl(s));
+                        pnlYoutube.Controls.Add(vid);
+                        vid.Dock = DockStyle.Top;
+                        vid.ChoseClick += ClickYT;
+                        vid.Remove_Click += RemoveFilm;
+                    }
+                    else
+                    {
+                        DataRow row = DataFrame.DataSet.Select("Name='" + s + "'")[0];
+                        Film hisFilm = cv2.filmread(row);
+                        flowPnlMyStore.Controls.Add(hisFilm);
+                        hisFilm.PictureBoxClick += ClickFilm;
+                        hisFilm.pctRemove.Visible = true;
+                        hisFilm.Remove_Click += RemoveFilm;
+                    }
+                }
+            }
+        }
+
+        private void ClickFilm(object sender, EventArgs e)
+        {
+            Film film = (Film)sender;
+            DataRow row = DataFrame.DataSet.Select("Name='" + film.lbName.Text + "'")[0];
+            OpenChildForm(new Describe(row));
+        }
+        private void ClickYT(object sender, EventArgs e)
+        {
+            YoutubeSave ytsave = (YoutubeSave)sender;
+            PlayYoutube play = new PlayYoutube(ytsave.YourChoice.Id,
+                ytsave.YourChoice.Snippet.Title, ytsave.YourChoice.Snippet.ChannelTitle);
+            play.Show();
+        }
+        //xóa film khỏi kho
+        private void RemoveFilm(object sender, EventArgs e)
+        {
+            string remove;
+            try
+            {
+                var item = (Film)sender;
+                remove = item.lbName.Text;
+            }
+            catch
+            {
+                var item = (YoutubeSave)sender;
+                remove = "https://www.youtube.com/watch?v=" + item.YourChoice.Id;
+            }
+            DataFrame.MyStore.Remove(remove);
+            flowPnlMyStore.Controls.Clear();
+            pnlYoutube.Controls.Clear();
+            LoadMyStore();
+        }
     }
 }

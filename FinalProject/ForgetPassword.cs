@@ -33,7 +33,7 @@ namespace FinalProject
         public int code;
         string[] strData;
         List<UserData> usersData = new List<UserData>();
-        string url = Application.StartupPath + "\\User.txt";
+        string url = Application.StartupPath + "\\User\\User.txt";
         public Home ParentForm { get; set; }
 
         public ForgetPassword()
@@ -59,7 +59,7 @@ namespace FinalProject
             message.From = new MailAddress("ndk2579@gmail.com");
 
             message.To.Add(new MailAddress(receiveMail));
-            message.Subject = "Đổi mật khẩu AnimeSub";
+            message.Subject = "Khôi phục mật khẩu AnimeSub";
             message.Body = "Xin chào " + username + "!\nĐây là mã xác minh bạn cần dùng để đổi mật khẩu Tài khoản AnimeSub của bạn:\n" + code + "\n\nNếu bạn không yêu cầu mã này thì có thể là ai đó đang tìm cách truy cập vào tài khoản của bạn." + "\nKhông chuyển tiếp hoặc cung cấp mã này cho bất kỳ ai." + "\n\nTrân trọng!\nAnimeSub.";
             smtp.Port = 587;
             smtp.Host = "smtp.gmail.com";
@@ -155,6 +155,12 @@ namespace FinalProject
                 lbError.ForeColor = Color.Red;
                 lbError.Visible = true;
             }
+            else if (txtNewPass.Text.Length < 8)
+            {
+                lbError.Text = "Mật khẩu phải lớn hơn 7 kí tự!";
+                lbError.ForeColor = Color.Red;
+                lbError.Visible = true;
+            }
             else
             {
                 bool flag = false;
@@ -168,16 +174,13 @@ namespace FinalProject
                 }
                 if (flag)
                 {
-                    lbError.Text = "Đổi mật khẩu thành công!";
+                    lbError.Text = "Khôi phục mật khẩu thành công!";
                     lbError.ForeColor = Color.Green;
                     lbError.Visible = true;
-                    txtCode.Text = "";
-                    txtNewPass.Text = "";
-                    txtRePass.Text = "";
                 }
                 else
                 {
-                    lbError.Text = "Đổi mật khẩu thất bại!";
+                    lbError.Text = "Khôi phục mật khẩu thất bại!";
                     lbError.ForeColor = Color.Red;
                     lbError.Visible = true;
                 }

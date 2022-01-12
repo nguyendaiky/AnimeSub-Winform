@@ -37,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -273,7 +274,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comment.Designer.cs">
+      <DependentUpon>Comment.cs</DependentUpon>
+    </Compile>
     <Compile Include="cv2.cs" />
+    <Compile Include="DataComment.cs" />
     <Compile Include="DataFrame.cs" />
     <Compile Include="Describe.cs">
       <SubType>Form</SubType>
@@ -350,6 +358,12 @@
     <Compile Include="WatchFilm.Designer.cs">
       <DependentUpon>WatchFilm.cs</DependentUpon>
     </Compile>
+    <Compile Include="YoutubeSave.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="YoutubeSave.Designer.cs">
+      <DependentUpon>YoutubeSave.cs</DependentUpon>
+    </Compile>
     <Compile Include="YoutubeSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -362,6 +376,9 @@
     <Compile Include="YoutubeVideo.Designer.cs">
       <DependentUpon>YoutubeVideo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Comment.resx">
+      <DependentUpon>Comment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Describe.resx">
       <DependentUpon>Describe.cs</DependentUpon>
     </EmbeddedResource>
@@ -407,6 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WatchFilm.resx">
       <DependentUpon>WatchFilm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YoutubeSave.resx">
+      <DependentUpon>YoutubeSave.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YoutubeSearch.resx">
       <DependentUpon>YoutubeSearch.cs</DependentUpon>
@@ -528,6 +548,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\avarta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noavatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white-star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yellow-star.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

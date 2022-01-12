@@ -1,0 +1,8 @@
+# .gitignore
+FinalProject/bin/Debug/Video
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/

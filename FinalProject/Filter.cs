@@ -49,12 +49,22 @@ namespace FinalProject
             childForm.BringToFront();
             childForm.Show();
         }
+
+        [Browsable(true)]
+        [Category("Action")]
+        [Description("Invoked event pictureBox")]
+        public event EventHandler ClickInHome;
+        public DataRow YourChoice;
         private void Film_Click(object sender, EventArgs e)
         {
             Film film = (Film)sender;
+
             string s = "Name='" + film.lbName.Text + "'";
-            DataRow row = DataFrame.DataSet.Select(s)[0];
-            OpenChildForm(new Describe(row));
+            YourChoice = DataFrame.DataSet.Select(s)[0];
+
+            if (this.ClickInHome != null)
+                this.ClickInHome(this, e);
+
         }
     }
 }

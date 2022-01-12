@@ -29,7 +29,7 @@ namespace FinalProject
 
         string[] strData;
         List<UserData> usersData = new List<UserData>();
-        string url = Application.StartupPath + "\\User.txt";
+        string url = Application.StartupPath + "\\User\\User.txt";
         public Home ParentForm { get; set; }
 
         public Register()
@@ -54,6 +54,11 @@ namespace FinalProject
             else if (txtPassword.Text != txtRePass.Text)
             {
                 lbError.Text = "Mật khẩu không khớp!";
+                lbError.Visible = true;
+            }
+            else if (txtPassword.Text.Length < 8)
+            {
+                lbError.Text = "Mật khẩu phải lớn hơn 7 kí tự!";
                 lbError.Visible = true;
             }
             else

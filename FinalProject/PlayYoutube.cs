@@ -15,17 +15,18 @@ namespace FinalProject
 {
     public partial class PlayYoutube : Form
     {
-        private SearchResult video;
         private string url;
-        public PlayYoutube(SearchResult vid)
+        private string ID;
+        public PlayYoutube(string id, string title, string channel)
         {
             InitializeComponent();
             using (Bitmap bm = Properties.Resources.youtube)
             {
                 this.Icon = Icon.FromHandle(bm.GetHicon());
             }
-            video = vid;
-            url = "https://www.youtube.com/embed" + vid.Id.VideoId;
+            url = "https://www.youtube.com/embed" + id;
+            ID = id;
+            LoadInformation(title, channel);
         }
 
         private void PlayYoutube_Load(object sender, EventArgs e)
@@ -36,15 +37,14 @@ namespace FinalProject
                     "<iframe width=\"100%\" height=\"" + webBrowser.Height + "\" src=\"https://www.youtube.com/embed/{0}?autoplay=1\"" +
                     "frameborder = \"0\" allow = \"autoplay; encrypted-media\" allowfullscreen></iframe>" +
                     "</body></html>";
-            this.webBrowser.DocumentText = string.Format(emded, video.Id.VideoId);
+            this.webBrowser.DocumentText = string.Format(emded, ID);
 
-            LoadInformation();
         }
 
-        private void LoadInformation()
+        private void LoadInformation(string title, string channel)
         {
-            lbTitle.Text = video.Snippet.Title;
-            
+            lbTitle.Text = title;
+            lbAuthor.Text = channel;
         }
     }  
 }

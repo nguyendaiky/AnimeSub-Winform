@@ -70,7 +70,7 @@ namespace FinalProject
             this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnFilter.ForeColor = System.Drawing.Color.DarkOrange;
             this.btnFilter.HoverState.Parent = this.btnFilter;
-            this.btnFilter.Location = new System.Drawing.Point(396, 467);
+            this.btnFilter.Location = new System.Drawing.Point(362, 466);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.ShadowDecoration.Parent = this.btnFilter;
             this.btnFilter.Size = new System.Drawing.Size(177, 45);

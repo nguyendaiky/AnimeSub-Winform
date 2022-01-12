@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.pnlATle = new Guna.UI2.WinForms.Guna2Panel();
             this.ctrlBoxHide = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -42,52 +45,55 @@
             this.pctSearch = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnlAll = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnlLoadAll = new System.Windows.Forms.Panel();
             this.pnlOther = new System.Windows.Forms.Panel();
+            this.gridViewTop = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.GpBoxRandom = new Guna.UI2.WinForms.Guna2GroupBox();
             this.btnRandom = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlAnime = new Guna.UI2.WinForms.Guna2Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.lbView = new System.Windows.Forms.Label();
             this.lbNumMoive = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.lbNumEp = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.flownlListFilm = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlPreview = new Guna.UI2.WinForms.Guna2Panel();
             this.lbName = new System.Windows.Forms.Label();
-            this.lbView = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lbRating = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlApp = new Guna.UI2.WinForms.Guna2Panel();
-            this.pctIcon = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pnlATle.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctSearch)).BeginInit();
             this.pnlAll.SuspendLayout();
+            this.pnlLoadAll.SuspendLayout();
             this.pnlOther.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTop)).BeginInit();
+            this.panel1.SuspendLayout();
             this.GpBoxRandom.SuspendLayout();
             this.pnlAnime.SuspendLayout();
             this.pnlPreview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlApp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlATle
             // 
-            this.pnlATle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlATle.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlATle.Controls.Add(this.ctrlBoxHide);
             this.pnlATle.Controls.Add(this.ctrlBoxMax);
             this.pnlATle.Controls.Add(this.ctrlBoxExit);
-            this.pnlATle.Location = new System.Drawing.Point(118, 0);
+            this.pnlATle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlATle.Location = new System.Drawing.Point(0, 0);
             this.pnlATle.Name = "pnlATle";
             this.pnlATle.ShadowDecoration.Parent = this.pnlATle;
-            this.pnlATle.Size = new System.Drawing.Size(1006, 31);
+            this.pnlATle.Size = new System.Drawing.Size(1124, 31);
             this.pnlATle.TabIndex = 0;
             this.pnlATle.DoubleClick += new System.EventHandler(this.pnlTile_DoubleClick);
             this.pnlATle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTile_MouseMove);
@@ -101,7 +107,7 @@
             this.ctrlBoxHide.FillColor = System.Drawing.Color.DarkOrange;
             this.ctrlBoxHide.HoverState.Parent = this.ctrlBoxHide;
             this.ctrlBoxHide.IconColor = System.Drawing.Color.Black;
-            this.ctrlBoxHide.Location = new System.Drawing.Point(856, 5);
+            this.ctrlBoxHide.Location = new System.Drawing.Point(974, 5);
             this.ctrlBoxHide.Name = "ctrlBoxHide";
             this.ctrlBoxHide.ShadowDecoration.Parent = this.ctrlBoxHide;
             this.ctrlBoxHide.Size = new System.Drawing.Size(40, 22);
@@ -116,7 +122,7 @@
             this.ctrlBoxMax.FillColor = System.Drawing.Color.DarkOrange;
             this.ctrlBoxMax.HoverState.Parent = this.ctrlBoxMax;
             this.ctrlBoxMax.IconColor = System.Drawing.Color.Black;
-            this.ctrlBoxMax.Location = new System.Drawing.Point(907, 5);
+            this.ctrlBoxMax.Location = new System.Drawing.Point(1025, 5);
             this.ctrlBoxMax.Name = "ctrlBoxMax";
             this.ctrlBoxMax.ShadowDecoration.Parent = this.ctrlBoxMax;
             this.ctrlBoxMax.Size = new System.Drawing.Size(40, 22);
@@ -130,7 +136,7 @@
             this.ctrlBoxExit.FillColor = System.Drawing.Color.DarkOrange;
             this.ctrlBoxExit.HoverState.Parent = this.ctrlBoxExit;
             this.ctrlBoxExit.IconColor = System.Drawing.Color.Black;
-            this.ctrlBoxExit.Location = new System.Drawing.Point(958, 5);
+            this.ctrlBoxExit.Location = new System.Drawing.Point(1076, 5);
             this.ctrlBoxExit.Name = "ctrlBoxExit";
             this.ctrlBoxExit.ShadowDecoration.Parent = this.ctrlBoxExit;
             this.ctrlBoxExit.Size = new System.Drawing.Size(40, 22);
@@ -138,11 +144,10 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlMenu.BackColor = System.Drawing.Color.Black;
+            this.pnlMenu.BackColor = System.Drawing.Color.Transparent;
             this.pnlMenu.BorderColor = System.Drawing.Color.Black;
             this.pnlMenu.BorderRadius = 10;
+            this.pnlMenu.BorderThickness = 1;
             this.pnlMenu.Controls.Add(this.btnYoutube);
             this.pnlMenu.Controls.Add(this.pctAvatar);
             this.pnlMenu.Controls.Add(this.btnStore);
@@ -150,10 +155,12 @@
             this.pnlMenu.Controls.Add(this.btnHome);
             this.pnlMenu.Controls.Add(this.pctSearch);
             this.pnlMenu.Controls.Add(this.txtSearch);
-            this.pnlMenu.Location = new System.Drawing.Point(121, 31);
+            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMenu.FillColor = System.Drawing.Color.Black;
+            this.pnlMenu.Location = new System.Drawing.Point(0, 31);
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.ShadowDecoration.Parent = this.pnlMenu;
-            this.pnlMenu.Size = new System.Drawing.Size(993, 57);
+            this.pnlMenu.Size = new System.Drawing.Size(1124, 57);
             this.pnlMenu.TabIndex = 1;
             // 
             // btnYoutube
@@ -186,10 +193,11 @@
             // pctAvatar
             // 
             this.pctAvatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctAvatar.BackColor = System.Drawing.Color.DarkGray;
-            this.pctAvatar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pctAvatar.BackColor = System.Drawing.Color.Black;
+            this.pctAvatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pctAvatar.Image = global::FinalProject.Properties.Resources.avarta;
             this.pctAvatar.ImageRotate = 0F;
-            this.pctAvatar.Location = new System.Drawing.Point(939, 4);
+            this.pctAvatar.Location = new System.Drawing.Point(1069, 4);
             this.pctAvatar.Name = "pctAvatar";
             this.pctAvatar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.pctAvatar.ShadowDecoration.Parent = this.pctAvatar;
@@ -200,7 +208,6 @@
             // 
             // btnStore
             // 
-            this.btnStore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStore.BackColor = System.Drawing.Color.Black;
             this.btnStore.BorderColor = System.Drawing.Color.DarkOrange;
             this.btnStore.BorderRadius = 10;
@@ -250,7 +257,7 @@
             this.btnFilter.ShadowDecoration.Parent = this.btnFilter;
             this.btnFilter.Size = new System.Drawing.Size(111, 39);
             this.btnFilter.TabIndex = 2;
-            this.btnFilter.Text = "Lọc Anime";
+            this.btnFilter.Text = "Lọc phim";
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // btnHome
@@ -283,11 +290,11 @@
             // pctSearch
             // 
             this.pctSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctSearch.BackgroundImage = global::FinalProject.Properties.Resources.search;
+            this.pctSearch.BackgroundImage = global::FinalProject.Properties.Resources.loupe;
             this.pctSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pctSearch.FillColor = System.Drawing.Color.Transparent;
             this.pctSearch.ImageRotate = 0F;
-            this.pctSearch.Location = new System.Drawing.Point(738, 16);
+            this.pctSearch.Location = new System.Drawing.Point(869, 16);
             this.pctSearch.Name = "pctSearch";
             this.pctSearch.ShadowDecoration.Parent = this.pctSearch;
             this.pctSearch.Size = new System.Drawing.Size(41, 23);
@@ -298,6 +305,9 @@
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.BorderColor = System.Drawing.Color.DarkOrange;
+            this.txtSearch.BorderRadius = 10;
+            this.txtSearch.BorderThickness = 2;
             this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -310,13 +320,13 @@
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.HoverState.Parent = this.txtSearch;
-            this.txtSearch.Location = new System.Drawing.Point(777, 16);
+            this.txtSearch.Location = new System.Drawing.Point(916, 16);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "";
             this.txtSearch.SelectedText = "";
             this.txtSearch.ShadowDecoration.Parent = this.txtSearch;
-            this.txtSearch.Size = new System.Drawing.Size(156, 23);
+            this.txtSearch.Size = new System.Drawing.Size(148, 23);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
@@ -329,25 +339,116 @@
             this.pnlAll.BorderColor = System.Drawing.Color.Black;
             this.pnlAll.BorderRadius = 10;
             this.pnlAll.BorderThickness = 2;
-            this.pnlAll.Controls.Add(this.pnlOther);
-            this.pnlAll.Controls.Add(this.pnlAnime);
+            this.pnlAll.Controls.Add(this.pnlLoadAll);
             this.pnlAll.Location = new System.Drawing.Point(7, 110);
             this.pnlAll.Name = "pnlAll";
             this.pnlAll.ShadowDecoration.Parent = this.pnlAll;
-            this.pnlAll.Size = new System.Drawing.Size(1110, 560);
+            this.pnlAll.Size = new System.Drawing.Size(1110, 567);
             this.pnlAll.TabIndex = 2;
+            // 
+            // pnlLoadAll
+            // 
+            this.pnlLoadAll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlLoadAll.Controls.Add(this.pnlOther);
+            this.pnlLoadAll.Controls.Add(this.pnlAnime);
+            this.pnlLoadAll.Location = new System.Drawing.Point(7, 9);
+            this.pnlLoadAll.Name = "pnlLoadAll";
+            this.pnlLoadAll.Size = new System.Drawing.Size(1096, 545);
+            this.pnlLoadAll.TabIndex = 2;
             // 
             // pnlOther
             // 
             this.pnlOther.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlOther.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlOther.Controls.Add(this.GpBoxRandom);
-            this.pnlOther.Controls.Add(this.label1);
-            this.pnlOther.Location = new System.Drawing.Point(817, 11);
+            this.pnlOther.Controls.Add(this.gridViewTop);
+            this.pnlOther.Controls.Add(this.panel1);
+            this.pnlOther.Location = new System.Drawing.Point(803, 3);
             this.pnlOther.Name = "pnlOther";
-            this.pnlOther.Size = new System.Drawing.Size(284, 537);
+            this.pnlOther.Size = new System.Drawing.Size(284, 539);
             this.pnlOther.TabIndex = 1;
+            // 
+            // gridViewTop
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.gridViewTop.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridViewTop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridViewTop.BackgroundColor = System.Drawing.Color.White;
+            this.gridViewTop.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridViewTop.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.gridViewTop.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridViewTop.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridViewTop.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gridViewTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridViewTop.EnableHeadersVisualStyles = false;
+            this.gridViewTop.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.gridViewTop.Location = new System.Drawing.Point(0, 216);
+            this.gridViewTop.Name = "gridViewTop";
+            this.gridViewTop.RowHeadersVisible = false;
+            this.gridViewTop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridViewTop.Size = new System.Drawing.Size(284, 323);
+            this.gridViewTop.TabIndex = 5;
+            this.gridViewTop.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.gridViewTop.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.gridViewTop.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.gridViewTop.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.gridViewTop.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.gridViewTop.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.gridViewTop.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.gridViewTop.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gridViewTop.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.gridViewTop.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.gridViewTop.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.gridViewTop.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.gridViewTop.ThemeStyle.HeaderStyle.Height = 23;
+            this.gridViewTop.ThemeStyle.ReadOnly = false;
+            this.gridViewTop.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.gridViewTop.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.gridViewTop.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.gridViewTop.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.gridViewTop.ThemeStyle.RowsStyle.Height = 22;
+            this.gridViewTop.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.gridViewTop.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.gridViewTop.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewTop_CellContentClick);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.GpBoxRandom);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(284, 216);
+            this.panel1.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(94, 177);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Top anime";
             // 
             // GpBoxRandom
             // 
@@ -362,7 +463,7 @@
             this.GpBoxRandom.FillColor = System.Drawing.Color.WhiteSmoke;
             this.GpBoxRandom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GpBoxRandom.ForeColor = System.Drawing.Color.DarkOrange;
-            this.GpBoxRandom.Location = new System.Drawing.Point(5, 2);
+            this.GpBoxRandom.Location = new System.Drawing.Point(6, 11);
             this.GpBoxRandom.Name = "GpBoxRandom";
             this.GpBoxRandom.ShadowDecoration.Parent = this.GpBoxRandom;
             this.GpBoxRandom.Size = new System.Drawing.Size(275, 152);
@@ -406,24 +507,12 @@
             this.guna2HtmlLabel1.TabIndex = 1;
             this.guna2HtmlLabel1.Text = "Nếu bạn không biết xem gì hôm nay. Hãy để chúng tôi chọn cho bạn.";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(93, 170);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Top anime";
-            // 
             // pnlAnime
             // 
             this.pnlAnime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlAnime.BackColor = System.Drawing.Color.White;
+            this.pnlAnime.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlAnime.BorderColor = System.Drawing.Color.Black;
             this.pnlAnime.BorderRadius = 10;
             this.pnlAnime.BorderThickness = 2;
@@ -441,10 +530,10 @@
             this.pnlAnime.FillColor = System.Drawing.Color.WhiteSmoke;
             this.pnlAnime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlAnime.ForeColor = System.Drawing.Color.DarkOrange;
-            this.pnlAnime.Location = new System.Drawing.Point(11, 11);
+            this.pnlAnime.Location = new System.Drawing.Point(3, 4);
             this.pnlAnime.Name = "pnlAnime";
             this.pnlAnime.ShadowDecoration.Parent = this.pnlAnime;
-            this.pnlAnime.Size = new System.Drawing.Size(800, 537);
+            this.pnlAnime.Size = new System.Drawing.Size(794, 539);
             this.pnlAnime.TabIndex = 0;
             // 
             // label6
@@ -459,6 +548,18 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Movie/OVA:";
             // 
+            // lbView
+            // 
+            this.lbView.AutoSize = true;
+            this.lbView.BackColor = System.Drawing.Color.Transparent;
+            this.lbView.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbView.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lbView.Location = new System.Drawing.Point(634, 74);
+            this.lbView.Name = "lbView";
+            this.lbView.Size = new System.Drawing.Size(19, 21);
+            this.lbView.TabIndex = 1;
+            this.lbView.Text = "0";
+            // 
             // lbNumMoive
             // 
             this.lbNumMoive.AutoSize = true;
@@ -470,6 +571,18 @@
             this.lbNumMoive.Size = new System.Drawing.Size(19, 21);
             this.lbNumMoive.TabIndex = 11;
             this.lbNumMoive.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(536, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 21);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Lượt xem:";
             // 
             // lbNumEp
             // 
@@ -501,11 +614,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flownlListFilm.AutoScroll = true;
-            this.flownlListFilm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.flownlListFilm.Location = new System.Drawing.Point(9, 274);
+            this.flownlListFilm.BackColor = System.Drawing.Color.Black;
+            this.flownlListFilm.Location = new System.Drawing.Point(9, 247);
             this.flownlListFilm.Name = "flownlListFilm";
-            this.flownlListFilm.Size = new System.Drawing.Size(782, 254);
+            this.flownlListFilm.Size = new System.Drawing.Size(776, 283);
             this.flownlListFilm.TabIndex = 0;
+            this.flownlListFilm.ClientSizeChanged += new System.EventHandler(this.flownlListFilm_ClientSizeChanged);
             // 
             // pnlPreview
             // 
@@ -513,8 +627,9 @@
             this.pnlPreview.Location = new System.Drawing.Point(9, 10);
             this.pnlPreview.Name = "pnlPreview";
             this.pnlPreview.ShadowDecoration.Parent = this.pnlPreview;
-            this.pnlPreview.Size = new System.Drawing.Size(524, 256);
+            this.pnlPreview.Size = new System.Drawing.Size(512, 231);
             this.pnlPreview.TabIndex = 2;
+            this.pnlPreview.ClientSizeChanged += new System.EventHandler(this.pnlPreview_ClientSizeChanged);
             // 
             // lbName
             // 
@@ -529,30 +644,6 @@
             this.lbName.Text = "Name";
             this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbName.Click += new System.EventHandler(this.lbName_Click);
-            // 
-            // lbView
-            // 
-            this.lbView.AutoSize = true;
-            this.lbView.BackColor = System.Drawing.Color.Transparent;
-            this.lbView.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbView.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lbView.Location = new System.Drawing.Point(634, 74);
-            this.lbView.Name = "lbView";
-            this.lbView.Size = new System.Drawing.Size(19, 21);
-            this.lbView.TabIndex = 1;
-            this.lbView.Text = "0";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(536, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 21);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Lượt xem:";
             // 
             // label2
             // 
@@ -583,7 +674,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::FinalProject.Properties.Resources.star;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(666, 105);
+            this.pictureBox1.Location = new System.Drawing.Point(690, 105);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(21, 19);
             this.pictureBox1.TabIndex = 2;
@@ -592,35 +683,20 @@
             // pnlApp
             // 
             this.pnlApp.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlApp.Controls.Add(this.pctIcon);
             this.pnlApp.Controls.Add(this.pnlMenu);
             this.pnlApp.Controls.Add(this.pnlATle);
             this.pnlApp.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlApp.Location = new System.Drawing.Point(0, 0);
             this.pnlApp.Name = "pnlApp";
             this.pnlApp.ShadowDecoration.Parent = this.pnlApp;
-            this.pnlApp.Size = new System.Drawing.Size(1124, 86);
+            this.pnlApp.Size = new System.Drawing.Size(1124, 104);
             this.pnlApp.TabIndex = 2;
-            // 
-            // pctIcon
-            // 
-            this.pctIcon.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pctIcon.BackgroundImage = global::FinalProject.Properties.Resources.icon;
-            this.pctIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pctIcon.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pctIcon.FillColor = System.Drawing.Color.Transparent;
-            this.pctIcon.ImageRotate = 0F;
-            this.pctIcon.Location = new System.Drawing.Point(0, 0);
-            this.pctIcon.Name = "pctIcon";
-            this.pctIcon.ShadowDecoration.Parent = this.pctIcon;
-            this.pctIcon.Size = new System.Drawing.Size(125, 86);
-            this.pctIcon.TabIndex = 2;
-            this.pctIcon.TabStop = false;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1124, 682);
             this.Controls.Add(this.pnlApp);
             this.Controls.Add(this.pnlAll);
@@ -631,20 +707,23 @@
             this.Text = "Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.Load += new System.EventHandler(this.Home_Load);
+            this.ClientSizeChanged += new System.EventHandler(this.Home_ClientSizeChanged);
             this.pnlATle.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pctAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctSearch)).EndInit();
             this.pnlAll.ResumeLayout(false);
+            this.pnlLoadAll.ResumeLayout(false);
             this.pnlOther.ResumeLayout(false);
-            this.pnlOther.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTop)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.GpBoxRandom.ResumeLayout(false);
             this.pnlAnime.ResumeLayout(false);
             this.pnlAnime.PerformLayout();
             this.pnlPreview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlApp.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pctIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -664,7 +743,6 @@
         private System.Windows.Forms.FlowLayoutPanel flownlListFilm;
         private Guna.UI2.WinForms.Guna2Panel pnlApp;
         private Guna.UI2.WinForms.Guna2CirclePictureBox pctAvatar;
-        private Guna.UI2.WinForms.Guna2PictureBox pctIcon;
         private Guna.UI2.WinForms.Guna2Button btnFilter;
         private Guna.UI2.WinForms.Guna2Panel pnlPreview;
         private System.Windows.Forms.Label lbRating;
@@ -684,5 +762,8 @@
         private System.Windows.Forms.Label lbNumEp;
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2Button btnYoutube;
+        private System.Windows.Forms.Panel pnlLoadAll;
+        private System.Windows.Forms.Panel panel1;
+        private Guna.UI2.WinForms.Guna2DataGridView gridViewTop;
     }
 }

@@ -49,10 +49,17 @@ namespace FinalProject
         [Category("Action")]
         [Description("Invoked event pictureBox")]
         public event EventHandler DownloadClick;
+        public event EventHandler AddStoreClick;
         private void btnDownload_Click(object sender, EventArgs e)
         {
             if (this.DownloadClick != null)
                 this.DownloadClick(this, e);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (this.AddStoreClick != null)
+                this.AddStoreClick(this, e);
         }
     }
 }

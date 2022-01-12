@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 
 namespace FinalProject
 {
@@ -17,6 +18,7 @@ namespace FinalProject
         public WatchFilm(DataRow dr)
         {
             InitializeComponent();
+            
             row = dr;
             string path = "";
             if (Convert.ToInt32(row["NumEp"]) != 0)
@@ -51,11 +53,18 @@ namespace FinalProject
             {
                 for (int idx = 1; idx <= ep; idx++)
                 {
-                    Button btn = new Button()
+                    Guna2Button btn = new Guna2Button()
                     {
                         Width = 60,
                         Height = 30,
-                        Text = idx.ToString()
+                        Text = idx.ToString(),
+                        BorderRadius = 10,
+                        ForeColor = Color.FromArgb(255, 128, 0),
+                        BackColor = Color.Transparent,
+                        FillColor = Color.Black,
+                        BorderColor = Color.Peru,
+                        BorderThickness = 2,
+                        Cursor = Cursors.Hand
                     };
                     btn.Click += Ep_Click;
                     LayoutPnlEp.Controls.Add(btn);
@@ -65,11 +74,17 @@ namespace FinalProject
             {
                 for (int idx = 1; idx <= mov; idx++)
                 {
-                    Button btn = new Button()
+                    Guna2Button btn = new Guna2Button()
                     {
-                        Width = 60,
+                        Width = 70,
                         Height = 30,
                         Text = "Movie " + idx.ToString(),
+                        BorderRadius = 10,
+                        ForeColor = Color.FromArgb(255, 128, 0),
+                        BackColor = Color.Transparent,
+                        FillColor = Color.Black,
+                        BorderColor = Color.Peru,
+                        BorderThickness = 2,
                         Cursor = Cursors.Hand                        
                     };
                     btn.Click += Ep_Click;
@@ -80,7 +95,7 @@ namespace FinalProject
 
         private void Ep_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            Guna2Button btn = (Guna2Button)sender;
             string path = Application.StartupPath + "\\Video\\" + row["Name"].ToString() + "\\" + btn.Text + ".mp4";
             WMP.URL = path;
         }

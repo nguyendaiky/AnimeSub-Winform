@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,10 +31,16 @@ namespace FinalProject
         public Home()
         {
             InitializeComponent();
-            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            Load_Data(DataFrame.DataSet);
-            Login();
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            Load_Data(DataFrame.DataSet);//load dataset
+            Login(); // login
+            LoadTopAnime();//load top anime
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+        }
+
+        private void Home_ClientSizeChanged(object sender, EventArgs e)
+        {
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         public void Login()
@@ -41,6 +48,14 @@ namespace FinalProject
             Login loginFrm = new Login();
             loginFrm.ParentForm = this;
             loginFrm.ShowDialog();
+            // avatar when login
+;           try
+            {
+                string path_avatar = Application.StartupPath + "\\User\\" + UserData.currentUsername + ".jfif";
+                UserData.Avatar = cv2.resize(cv2.imread(path_avatar), new Size(pctAvatar.Width, pctAvatar.Height));
+                pctAvatar.Image = UserData.Avatar;
+            }
+            catch { pctAvatar.Image = cv2.resize(Properties.Resources.avarta, new Size(pctAvatar.Width, pctAvatar.Height)); }
         }
 
         public void Register()
@@ -73,11 +88,20 @@ namespace FinalProject
             int idx = random.Next(limit);
             DataRow random_row = DataFrame.DataSet.Rows[idx];
             Load_Preview(random_row);
+
+            pnlPreview.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlPreview.Width, pnlPreview.Height, 20, 20));
+            flownlListFilm.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flownlListFilm.Width, flownlListFilm.Height, 20, 20));
+
+            DataFrame.History = DataFrame.ReadHistory();//load history
+            DataFrame.MyStore = DataFrame.ReadMyStore();//load my store
+            ResizeGrid();
         }
 
         private void Home_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //DataFrame.WriteExcel(Application.StartupPath + "\\Data.xlsx", DataFrame.DataSet);
+            DataFrame.WriteExcel(Application.StartupPath + "\\Data.xlsx", DataFrame.DataSet);
+            DataFrame.WriteHistory();
+            DataFrame.WriteMyStore();
         }
 
         private void pnlTile_MouseMove(object sender, MouseEventArgs e)
@@ -135,7 +159,7 @@ namespace FinalProject
             pnlPreview.BackgroundImage = img;
             lbName.Text = row["Name"].ToString();
             lbView.Text = string.Format("{0:N}", Convert.ToInt32(row["View"])).Replace(".00", "");
-            lbRating.Text = row["Rating"].ToString();
+            lbRating.Text = Math.Round(Convert.ToDouble(row["Rating"]), 1).ToString();
             lbNumEp.Text = row["NumEp"].ToString() + " Tập";
             lbNumMoive.Text = row["NumMovie"].ToString() + " Tập";
         }
@@ -178,14 +202,14 @@ namespace FinalProject
             Film film = (Film)sender;
             string s = "Name='" + film.lbName.Text + "'";
             DataRow row = DataFrame.DataSet.Select(s)[0];
-            OpenChildForm(new Describe(row), pnlAnime);
+            OpenChildForm(new Describe(row), pnlLoadAll);
         }
 
         private void lbName_Click(object sender, EventArgs e)
         {
             string s = "Name='" + lbName.Text + "'";
             DataRow row = DataFrame.DataSet.Select(s)[0];
-            OpenChildForm(new Describe(row), pnlAnime);
+            OpenChildForm(new Describe(row), pnlLoadAll);
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -206,7 +230,7 @@ namespace FinalProject
 
             int idx = random.Next(limit);
             DataRow random_row = DataFrame.DataSet.Rows[idx];
-            OpenChildForm(new Describe(random_row), pnlAnime);
+            OpenChildForm(new Describe(random_row), pnlLoadAll);
         }
 
         //preview
@@ -222,10 +246,49 @@ namespace FinalProject
         //store film
         private void btnStore_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Store(), pnlAll);
+            OpenChildForm(new Store(), pnlLoadAll);
         }
 
-        //filter anime
+        //User
+        private void pctAvatar_Click(object sender, EventArgs e)
+        {
+            User userFrm = new User();
+            this.Visible = false;
+            userFrm.ShowDialog();
+            this.Visible = true;
+
+            string path_avatar = userFrm.path_avatar;
+            string path_save = Application.StartupPath + "\\User\\" + UserData.currentUsername + ".jfif";
+            SaveAvatar(path_avatar, path_save);
+        }
+        private void SaveAvatar(string path_avatar, string path_save)
+        {
+            if (path_avatar != "")
+            {
+                if (File.Exists(path_save))
+                {
+                    System.GC.Collect();
+                    System.GC.WaitForPendingFinalizers();
+                    File.Delete(path_save);
+                    File.Copy(path_avatar, path_save);
+                }
+                else
+                {
+                    File.Copy(path_avatar, path_save);
+                }
+                UserData.Avatar = cv2.resize(cv2.imread(path_avatar), new Size(pctAvatar.Width, pctAvatar.Height));
+                pctAvatar.Image = UserData.Avatar;
+            }
+        }
+
+        //search and filter anime
+        private void OpenFilter(DataTable table)
+        {
+            Filter frmFilter = new Filter(table);
+            OpenChildForm(frmFilter, pnlAnime);
+            frmFilter.ClickInHome += ChoseFilm;
+        }
+
         private DataTable TakeTableFromFilter(DataTable table, List<List<string>> filter)
         {
             DataTable result = DataFrame.new_DataFilm();
@@ -242,7 +305,7 @@ namespace FinalProject
                         result.ImportRow(row);
                 }
             }
-    
+
             return result;
         }
 
@@ -250,7 +313,7 @@ namespace FinalProject
         {
             List<string> TypeFilm = DataFrame.getDataFromCol(DataFrame.DataSet, "Type");
             TypeFilm.RemoveAt(26);
-            List<string>  Studio = DataFrame.getDataFromCol(DataFrame.DataSet, "Studio");
+            List<string> Studio = DataFrame.getDataFromCol(DataFrame.DataSet, "Studio");
             Tuple<List<string>, List<string>> Season_Year = DataFrame.getSplitSeaseon(DataFrame.DataSet);
             FrmFilter chsType = new FrmFilter(TypeFilm, Studio, Season_Year);
             chsType.ShowDialog();
@@ -262,39 +325,15 @@ namespace FinalProject
                 chsType.lstChoseYear
             });
 
-            OpenChildForm(new Filter(lstChose), pnlAnime);
+            OpenFilter(lstChose);
         }
-        //User
-        private Image BrowersAvatar() //Avatar
+
+        private void pctSearch_Click(object sender, EventArgs e)
         {
-            OpenFileDialog fdlg = new OpenFileDialog();
-            fdlg.Title = "Brower Avatar";
-            fdlg.InitialDirectory = @"c:\";
-            fdlg.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
-            fdlg.FilterIndex = 2;
-            fdlg.RestoreDirectory = true;
-            if (fdlg.ShowDialog() == DialogResult.OK)
-            {
-                string url = fdlg.FileName.Replace("\\", "/");
-                try
-                {
-                    return cv2.imread(url);
-                }
-                catch { return null; }
-            }
-            return null;
+            DataTable table = SearchTable(txtSearch.Text);
+            OpenFilter(table);
         }
 
-        private void pctAvatar_Click(object sender, EventArgs e)
-        {
-            User userFrm = new User();
-            this.Visible = false;
-            userFrm.ShowDialog();
-            this.Visible = true;
-        }
-
-
-        //search
         private DataTable SearchTable(string s)
         {
             DataTable res = DataFrame.new_DataFilm();
@@ -308,31 +347,78 @@ namespace FinalProject
 
             return res;
         }
-        private void pctSearch_Click(object sender, EventArgs e)
-        {
-            DataTable table = SearchTable(txtSearch.Text);
-            OpenChildForm(new Filter(table), pnlAnime);
-        }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 DataTable table = SearchTable(txtSearch.Text);
-                OpenChildForm(new Filter(table), pnlAnime);
+                Filter frmFilter = new Filter(table);
+                frmFilter.ClickInHome += ChoseFilm;
+                OpenFilter(table);
             }
-
         }
+
+        private void ChoseFilm(object sender, EventArgs e)
+        {
+            Filter frmFilter = (Filter)sender;
+            OpenChildForm(new Describe(frmFilter.YourChoice), pnlLoadAll);
+        }
+
+        // youtube
 
         private void btnYoutube_Click(object sender, EventArgs e)
         {
             YoutubeSearch frmSearchY = new YoutubeSearch();
             frmSearchY.ShowDialog();
+        }
 
-            if (frmSearchY.YourChoice != null)
+        private void pnlPreview_ClientSizeChanged(object sender, EventArgs e)
+        {
+            pnlPreview.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlPreview.Width, pnlPreview.Height, 20, 20));
+        }
+
+        private void flownlListFilm_ClientSizeChanged(object sender, EventArgs e)
+        {
+            flownlListFilm.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flownlListFilm.Width, flownlListFilm.Height, 20, 20));
+        }
+
+        //Top anime
+        private void LoadTopAnime()
+        {
+            DataView top = DataFrame.DataSet.DefaultView;
+            top.Sort = "View desc";
+            DataTable sorted = top.ToTable();
+
+            DataTable res = new DataTable();
+            res.Columns.Add("Tên", typeof(string));
+            res.Columns.Add("Lượt xem", typeof(int));
+
+            for(int idx = 0; idx < 10; idx++)
             {
-                new PlayYoutube(frmSearchY.YourChoice).Show();
+                DataRow row = res.NewRow();
+                row["Tên"] = sorted.Rows[idx]["Name"].ToString();
+                row["Lượt xem"] = Convert.ToInt32(sorted.Rows[idx]["View"]);
+                res.Rows.Add(row);
             }
+            gridViewTop.DataSource = res;
+        }
+        private void ResizeGrid()
+        {
+            gridViewTop.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders);
+            gridViewTop.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+        }
+
+        private void gridViewTop_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataTable table = (DataTable)gridViewTop.DataSource;
+            try
+            {
+                DataRow dr = table.Rows[e.RowIndex];
+                DataRow row = DataFrame.DataSet.Select(string.Format("Name ='{0}'", dr["Tên"].ToString().Replace("'", "''")))[0];
+                OpenChildForm(new Describe(row), pnlLoadAll);
+            }
+            catch { }
         }
     }
 }

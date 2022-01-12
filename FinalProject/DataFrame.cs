@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -65,6 +66,7 @@ namespace FinalProject
             myTable.Columns.Add("Season", typeof(string));
             myTable.Columns.Add("Director", typeof(string));
             myTable.Columns.Add("Rating", typeof(double));
+            myTable.Columns.Add("NumRating", typeof(int));
 
             for (int i = 2; i <= rows; i++)
             {
@@ -82,6 +84,7 @@ namespace FinalProject
                     myNewRow["Season"] = Convert.ToString(excelRange.Cells[i, 9].Value2); //
                     myNewRow["Director"] = Convert.ToString(excelRange.Cells[i, 10].Value2); //
                     myNewRow["Rating"] = Convert.ToDouble(excelRange.Cells[i, 11].Value2);
+                    myNewRow["NumRating"] = Convert.ToInt32(excelRange.Cells[i, 12].Value2);
 
                     myTable.Rows.Add(myNewRow);
                 }
@@ -151,5 +154,76 @@ namespace FinalProject
             Tuple<List<string>, List<string>> result = new Tuple<List<string>, List<string>>(lstSeason, lstYearStr);
             return result;
         }
+
+        //data history
+        public static List<string> ReadHistory()
+        {
+            List<string> res = new List<string>();
+            string path = Application.StartupPath + "\\History\\" + UserData.currentUsername + ".txt";
+            if (!File.Exists(path))
+            {
+                using (var tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine();
+                }
+            }
+            string[] readfile = File.ReadAllLines(path);
+            foreach (string s in readfile)
+            {
+                if (s != "")
+                {
+                    res.Add(s);
+                }
+            }
+            return res;
+        }
+        public static void WriteHistory()
+        {
+            string path = Application.StartupPath + "\\History\\" + UserData.currentUsername + ".txt";
+            using (StreamWriter sr = new StreamWriter(path))
+            {
+                foreach (string name in History)
+                {
+                    sr.WriteLine(name);
+                }
+            }
+
+        }
+        public static List<string> History;
+
+        //Data my store
+        public static List<string> ReadMyStore()
+        {
+            List<string> res = new List<string>();
+            string path = Application.StartupPath + "\\MyStore\\" + UserData.currentUsername + ".txt";
+            if (!File.Exists(path))
+            {
+                using (var tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine();
+                }
+            }
+            string[] readfile = File.ReadAllLines(path);
+            foreach (string s in readfile)
+            {
+                if (s != "")
+                {
+                    res.Add(s);
+                }
+            }
+            return res;
+        }
+        public static void WriteMyStore()
+        {
+            string path = Application.StartupPath + "\\MyStore\\" + UserData.currentUsername + ".txt";
+            using (StreamWriter sr = new StreamWriter(path))
+            {
+                foreach (string name in MyStore)
+                {
+                    sr.WriteLine(name);
+                }
+            }
+        }
+        public static List<string> MyStore;
     }
 }

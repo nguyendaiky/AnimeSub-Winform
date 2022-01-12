@@ -1,0 +1,7 @@
+Tải ứng dụng tại link drive: https://drive.google.com/drive/folders/1s-uMFPtGhccBZY8qi6uRdKHS_oWJuDVe?usp=sharing
+
+Trong drive gồm:
+- Thư mục Application_Anime chứa toàn bộ source code của ứng dụng.
+- Thư mục Video chứa các bộ phim của ứng dụng.
+Sau khi tải Application_Anime về ta hoàn toàn có thể chạy chương trình một cách độc lập mà không cần thư mục Video. Tuy nhiên, khi mở video trong ứng dụng thì sẽ không được load lên.
+Để xem được video và ứng dụng hoạt động một cách đầy đủ, ta cần tải thêm thư mục Video và bỏ vào thư mục FinalProject/bin/Debug.

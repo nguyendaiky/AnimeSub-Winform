@@ -43,11 +43,11 @@ namespace FinalProject
             this.Title.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Title.BackColor = System.Drawing.Color.Transparent;
             this.Title.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Title.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Title.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Title.ForeColor = System.Drawing.Color.White;
-            this.Title.Location = new System.Drawing.Point(174, 0);
+            this.Title.Location = new System.Drawing.Point(258, 15);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(446, 65);
+            this.Title.Size = new System.Drawing.Size(521, 65);
             this.Title.TabIndex = 1;
             this.Title.Text = "Title";
             this.Title.Click += new System.EventHandler(this.Mouse_Click);
@@ -56,10 +56,11 @@ namespace FinalProject
             // 
             this.Author.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Author.AutoSize = true;
-            this.Author.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(170)))), ((int)(((byte)(156)))));
-            this.Author.Location = new System.Drawing.Point(176, 78);
+            this.Author.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Author.ForeColor = System.Drawing.Color.White;
+            this.Author.Location = new System.Drawing.Point(259, 80);
             this.Author.Name = "Author";
-            this.Author.Size = new System.Drawing.Size(38, 13);
+            this.Author.Size = new System.Drawing.Size(58, 21);
             this.Author.TabIndex = 2;
             this.Author.Text = "Author";
             // 
@@ -79,7 +80,7 @@ namespace FinalProject
             this.btnDownload.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDownload.ForeColor = System.Drawing.Color.White;
             this.btnDownload.HoverState.Parent = this.btnDownload;
-            this.btnDownload.Location = new System.Drawing.Point(626, 30);
+            this.btnDownload.Location = new System.Drawing.Point(797, 55);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnDownload.ShadowDecoration.Parent = this.btnDownload;
@@ -103,12 +104,13 @@ namespace FinalProject
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.HoverState.Parent = this.btnAdd;
-            this.btnAdd.Location = new System.Drawing.Point(667, 30);
+            this.btnAdd.Location = new System.Drawing.Point(838, 55);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnAdd.ShadowDecoration.Parent = this.btnAdd;
             this.btnAdd.Size = new System.Drawing.Size(35, 35);
             this.btnAdd.TabIndex = 3;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // Thumbnail
             // 
@@ -118,7 +120,7 @@ namespace FinalProject
             this.Thumbnail.Location = new System.Drawing.Point(0, 0);
             this.Thumbnail.Name = "Thumbnail";
             this.Thumbnail.ShadowDecoration.Parent = this.Thumbnail;
-            this.Thumbnail.Size = new System.Drawing.Size(170, 100);
+            this.Thumbnail.Size = new System.Drawing.Size(250, 150);
             this.Thumbnail.TabIndex = 0;
             this.Thumbnail.TabStop = false;
             this.Thumbnail.Click += new System.EventHandler(this.Mouse_Click);
@@ -135,7 +137,7 @@ namespace FinalProject
             this.Controls.Add(this.Thumbnail);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "YoutubeVideo";
-            this.Size = new System.Drawing.Size(705, 100);
+            this.Size = new System.Drawing.Size(885, 150);
             ((System.ComponentModel.ISupportInitialize)(this.Thumbnail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
