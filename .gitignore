@@ -1,5 +1,5 @@
 # .gitignore
-FinalProject/bin/Debug/Video
+FinalProject/bin/Debug/Video/
 *.rsuser
 *.suo
 *.user
